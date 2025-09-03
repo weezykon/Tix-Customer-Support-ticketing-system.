@@ -45,11 +45,10 @@ cd Tix-Customer-Support-ticketing-system
 
 ### 2. Install Dependencies
 
-Install the required Ruby gems and JavaScript packages:
+Install the required Ruby gems:
 
 ```bash
 bundle install
-yarn install
 ```
 
 ### 3. Environment Variables Setup
