@@ -39,8 +39,8 @@ Follow these steps to set up and run the TixApp backend on your local machine.
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository_url>
-cd tix-app
+git clone https://github.com/weezykon/Tix-Customer-Support-ticketing-system.git
+cd Tix-Customer-Support-ticketing-system
 ```
 
 ### 2. Install Dependencies
