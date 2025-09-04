@@ -74,7 +74,12 @@ GEM
     bcrypt (3.1.20)
     bootsnap (1.18.6)
       msgpack (~> 1.2)
+    brakeman (7.1.0)
+      racc
     builder (3.3.0)
+    bundler-audit (0.9.2)
+      bundler (>= 1.2.0, < 3)
+      thor (~> 1.0)
     concurrent-ruby (1.3.4)
     crass (1.0.6)
     date (3.4.1)
@@ -96,6 +101,9 @@ GEM
       base64
       fiber-storage
       logger
+    graphql-batch (0.6.0)
+      graphql (>= 1.12.18, < 3)
+      promise.rb (~> 0.7.2)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     io-console (0.8.1)
@@ -104,6 +112,8 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.13.2)
+    jwt (3.1.2)
+      base64
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     logger (1.7.0)
@@ -161,6 +171,7 @@ GEM
       prettyprint
     prettyprint (0.2.0)
     prism (1.4.0)
+    promise.rb (0.7.4)
     psych (5.2.6)
       date
       stringio
@@ -259,11 +270,15 @@ DEPENDENCIES
   apollo_upload_server
   bcrypt (~> 3.1.7)
   bootsnap
+  brakeman
+  bundler-audit
   concurrent-ruby (= 1.3.4)
   debug
   dotenv-rails
   graphiql-rails
   graphql
+  graphql-batch
+  jwt
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.8, >= 7.0.8.3)

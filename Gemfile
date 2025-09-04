@@ -7,17 +7,20 @@ ruby '3.2.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.8', '>= 7.0.8.3'
-
+gem 'jwt'
 gem 'concurrent-ruby', '1.3.4'
 
 # Use postgresql as the database for Active Record
 gem 'apollo_upload_server'
 gem 'graphql'
+gem 'graphql-batch'
 gem 'pg', '~> 1.1'
 gem 'sprockets-rails'
 
 group :development do
   gem 'graphiql-rails'
+  gem 'brakeman', require: false
+  gem 'bundler-audit', require: false
 end
 
 # Use the Puma web server [https://github.com/puma/puma]
