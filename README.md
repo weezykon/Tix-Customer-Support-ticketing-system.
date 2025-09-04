@@ -291,5 +291,3 @@ Feel free to extend the functionality or contribute to the project. Some areas f
 *   Adding more robust validation rules.
 
 ---
-
-**Note:** This README provides a basic guide. For detailed API schema and types, refer to the GraphiQL interface (`/graphiql`) or the source code in `app/graphql/`.
