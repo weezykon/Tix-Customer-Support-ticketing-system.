@@ -1,24 +1,16 @@
 # frozen_string_literal: true
 
+# The schema for the Tix application.
 class TixAppSchema < GraphQL::Schema
   mutation(Types::MutationType)
   query(Types::QueryType)
 
-  # For batching, use the `GraphQL::Batch` gem.
-  # For more info, see https://github.com/rmosolgo/graphql-batch
-  use GraphQL::Batch
+  # For batching, use the `GraphQL::Dataloader` gem.
+  use GraphQL::Dataloader
 
-  # Opt in to the new runtime (default in future graphql-ruby versions)
-  use GraphQL::Execution::Interpreter
+  
 
-  # Opt in to the new parser (default in future graphql-ruby versions)
-  use GraphQL::Analysis::AST
-
-  # Add built-in connections for pagination
-  use GraphQL::Pagination::Connections
-
-  # Add built-in tracing for performance monitoring
-  use GraphQL::Tracing::ActiveSupportTracing
+  
 
   # Union and Interface Resolution
   def self.resolve_type(_type, obj, _ctx)

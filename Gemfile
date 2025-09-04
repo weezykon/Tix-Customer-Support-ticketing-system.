@@ -6,14 +6,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.2.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.0.8', '>= 7.0.8.3'
+gem 'rails', '~> 7.2.0'
 gem 'jwt'
 gem 'concurrent-ruby', '1.3.4'
 
 # Use postgresql as the database for Active Record
 gem 'apollo_upload_server'
 gem 'graphql'
-gem 'graphql-batch'
+
 gem 'pg', '~> 1.1'
 gem 'sprockets-rails'
 
@@ -50,5 +50,5 @@ gem 'bootsnap', require: false
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rubocop', require: false
-  gem 'dotenv-rails', require: 'dotenv/rails-now'
+  gem 'dotenv-rails', require: 'dotenv/load'
 end
