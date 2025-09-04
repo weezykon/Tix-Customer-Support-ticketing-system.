@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module SimpleCommand
+  extend ActiveSupport::Concern
   # A simple command pattern implementation.
-  prepend SimpleCommand::ClassMethods
-  include SimpleCommand::InstanceMethods
+  
 
   module ClassMethods
     # Class methods for SimpleCommand.
@@ -32,4 +32,7 @@ module SimpleCommand
       base.include ActiveModel::Model
     end
   end
+
+  prepend SimpleCommand::ClassMethods
+  include SimpleCommand::InstanceMethods
 end

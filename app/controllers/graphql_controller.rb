@@ -2,6 +2,9 @@
 
 # Handles GraphQL queries and mutations.
 class GraphqlController < ApplicationController
+  # Skip authentication in development environment
+  skip_before_action :authenticate_request, if: :development_environment?
+
   # If accessing from outside this domain, nullify the session
   # This allows for outside API access while preventing CSRF attacks,
   # but you'll have to authenticate your user separately
@@ -23,6 +26,10 @@ class GraphqlController < ApplicationController
   end
 
   private
+
+  def development_environment?
+    Rails.env.development?
+  end
 
   # Handle variables in form data, JSON body, or a blank value
   def prepare_variables(variables_param)

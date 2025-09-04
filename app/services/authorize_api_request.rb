@@ -2,14 +2,16 @@
 
 # Authorizes API requests by validating JWT tokens.
 class AuthorizeApiRequest
-  prepend SimpleCommand
+  include SimpleCommand
 
   def initialize(headers = {})
     @headers = headers
+    super()
   end
 
   def call
-    user
+    @result = user
+    self
   end
 
   private
