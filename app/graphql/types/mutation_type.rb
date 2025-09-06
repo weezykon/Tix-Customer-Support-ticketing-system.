@@ -17,5 +17,6 @@ module Types
 
     field :attach_file_to_ticket, mutation: Mutations::AttachFileToTicket
     field :assign_ticket, mutation: Mutations::AssignTicket
+    field :login_user, mutation: Mutations::LoginUser
   end
 end
