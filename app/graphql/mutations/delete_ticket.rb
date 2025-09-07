@@ -3,12 +3,12 @@
 module Mutations
   # Deletes a ticket.
   class DeleteTicket < BaseMutation
-    argument :id, ID, required: true
+    argument :input, Types::Inputs::DeleteTicketInput, required: true
 
     field :ticket, Types::TicketType, null: false
     field :errors, [String], null: false
 
-    def resolve(id:)
+    def resolve(input:)
       raise GraphQL::ExecutionError, 'Authentication required' unless context[:current_user]
 
       unless context[:current_user].role == 'agent'
@@ -16,7 +16,7 @@ module Mutations
               'You are not authorized to perform this action.'
       end
 
-      ticket = Ticket.find(id)
+      ticket = Ticket.find(input.id)
       if ticket.destroy
         { ticket: ticket, errors: [] }
       else
