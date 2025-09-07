@@ -3,16 +3,15 @@
 module Mutations
   # Attaches a file to a ticket.
   class AttachFileToTicket < BaseMutation
-    argument :ticket_id, ID, required: true
-    argument :file, ApolloUploadServer::Upload, required: true
+    argument :input, Types::Inputs::AttachFileToTicketInput, required: true
 
     field :ticket, Types::TicketType, null: false
     field :errors, [String], null: false
 
-    def resolve(ticket_id:, file:)
+    def resolve(input:)
       raise GraphQL::ExecutionError, 'Authentication required' unless context[:current_user]
 
-      ticket = Ticket.find(ticket_id)
+      ticket = Ticket.find(input.ticket_id)
 
       # Authorize: Only the ticket owner or an agent can attach files
       if context[:current_user].role == 'customer' && ticket.user != context[:current_user]
@@ -20,7 +19,7 @@ module Mutations
       end
 
       # Attach the file using Active Storage
-      ticket.attachments.attach(file)
+      ticket.attachments.attach(input.file)
 
       if ticket.save
         { ticket: ticket, errors: [] }
