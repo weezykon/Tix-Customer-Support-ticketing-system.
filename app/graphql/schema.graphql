@@ -119,7 +119,7 @@ type Mutation {
   deleteTicket(id: ID!): DeleteTicketPayload
   deleteUser(id: ID!): DeleteUserPayload
   loginUser(input: LoginUserInput!): LoginUserPayload
-  updateComment(content: String!, id: ID!): UpdateCommentPayload
+  updateComment(input: UpdateCommentInput!): UpdateCommentPayload
   updateTicket(input: UpdateTicketInput!): UpdateTicketPayload
   updateUser(input: UpdateUserInput!): UpdateUserPayload
 }
@@ -149,6 +149,11 @@ type Ticket {
   subject: String!
   title: String!
   user: User!
+}
+
+input UpdateCommentInput {
+  content: String!
+  id: ID!
 }
 
 """
