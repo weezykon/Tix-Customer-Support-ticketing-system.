@@ -13,9 +13,9 @@ module Mutations
       command = AuthenticateUser.call(email, password)
 
       if command.success?
-        { token: command.result, user: context[:current_user], errors: [] }
+        { token: command.result, user: command.authenticated_user, errors: [] }
       else
-        { token: nil, user: nil, errors: command.errors.values.flatten }
+        { token: nil, user: nil, errors: command.errors.full_messages }
       end
     end
   end
