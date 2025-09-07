@@ -3,15 +3,15 @@
 module Mutations
   # Deletes a comment.
   class DeleteComment < BaseMutation
-    argument :id, ID, required: true
+    argument :input, Types::Inputs::DeleteCommentInput, required: true
 
     field :comment, Types::CommentType, null: false
     field :errors, [String], null: false
 
-    def resolve(id:)
+    def resolve(input:)
       raise GraphQL::ExecutionError, 'Authentication required' unless context[:current_user]
 
-      comment = Comment.find(id)
+      comment = Comment.find(input.id)
 
       if context[:current_user].role == 'customer' && comment.user != context[:current_user]
         raise GraphQL::ExecutionError, 'You are not authorized to delete this comment.'
