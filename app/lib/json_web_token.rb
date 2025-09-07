@@ -4,7 +4,7 @@ require 'jwt'
 
 class JsonWebToken
   # Utility class for encoding and decoding JSON Web Tokens (JWT).
-  SECRET_KEY = Rails.application.secrets.secret_key_base.to_s
+  SECRET_KEY = Rails.application.credentials.secret_key_base.to_s
 
   raise 'Missing SECRET_KEY environment variable for JWT authentication.' unless SECRET_KEY.present?
 
