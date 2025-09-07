@@ -11,9 +11,11 @@ class Ticket < ApplicationRecord
 
   validates :status, inclusion: { in: %w[open in_progress closed], message: '%<value>s is not a valid status' }
   validates :priority, presence: true, inclusion: { in: %w[low medium high], message: '%<value>s is not a valid priority' }
+  validates :department, presence: true
+  validates :subject, presence: true
 
   def self.to_csv
-    attributes = %w[id title description status priority user_id assigned_agent_id created_at updated_at]
+    attributes = %w[id title description status priority department subject user_id assigned_agent_id created_at updated_at]
 
     CSV.generate(headers: true) do |csv|
       csv << attributes
