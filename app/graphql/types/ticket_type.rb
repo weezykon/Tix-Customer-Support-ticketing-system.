@@ -7,6 +7,7 @@ module Types
     field :title, String, null: false
     field :description, String, null: false
     field :status, String, null: false
+    field :priority, String, null: false
     field :user, Types::UserType, null: false
     field :assigned_agent, Types::UserType, null: true
     field :comments, [Types::CommentType], null: true
