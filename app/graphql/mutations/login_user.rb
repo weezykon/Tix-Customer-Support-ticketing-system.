@@ -2,15 +2,14 @@
 
 module Mutations
   class LoginUser < BaseMutation
-    argument :email, String, required: true
-    argument :password, String, required: true
+    argument :input, Types::Inputs::LoginUserInput, required: true
 
     field :token, String, null: true
     field :user, Types::UserType, null: true
     field :errors, [String], null: false
 
-    def resolve(email:, password:)
-      command = AuthenticateUser.call(email, password)
+    def resolve(input:)
+      command = AuthenticateUser.call(input.email, input.password)
 
       if command.success?
         { token: command.result, user: command.authenticated_user, errors: [] }
