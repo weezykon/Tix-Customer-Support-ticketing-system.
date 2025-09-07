@@ -13,6 +13,7 @@ gem 'concurrent-ruby', '1.3.4'
 # Use postgresql as the database for Active Record
 gem 'apollo_upload_server'
 gem 'graphql'
+gem 'rack-cors', require: 'rack/cors'
 
 gem 'pg', '~> 1.1'
 gem 'sprockets-rails'
