@@ -2,8 +2,8 @@
 
 # Handles GraphQL queries and mutations.
 class GraphqlController < ApplicationController
-  # Skip authentication in development environment
-  # skip_before_action :authenticate_request, if: :development_environment?
+  # Skip authentication for introspection queries
+  skip_before_action :authenticate_request, only: [:execute], if: -> { params[:operationName] == 'IntrospectionQuery' }
 
   # If accessing from outside this domain, nullify the session
   # This allows for outside API access while preventing CSRF attacks,
